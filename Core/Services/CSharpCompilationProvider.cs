@@ -9,10 +9,10 @@ using Roslyn.Compilers.CSharp;
 
 namespace Compilify.Services
 {
-    public class CSharpCompilationProvider : ICSharpCompilationProvider
-    {
-        private const string EntryPoint = 
-            @"public class EntryPoint 
+	public class CSharpCompilationProvider : ICSharpCompilationProvider
+	{
+		private const string EntryPoint =
+			@"public class EntryPoint 
               {
                   public static object Result { get; set; }
                   
@@ -22,8 +22,8 @@ namespace Compilify.Services
                   }
               }";
 
-        private static readonly ReadOnlyArray<string> DefaultNamespaces =
-            ReadOnlyArray<string>.CreateFrom(new[]
+		private static readonly ReadOnlyArray<string> DefaultNamespaces =
+			ReadOnlyArray<string>.CreateFrom(new[]
             {
                 "System", 
                 "System.IO", 
@@ -34,66 +34,54 @@ namespace Compilify.Services
                 "System.Collections.Generic"
             });
 
-        public Compilation Compile(Post post)
-        {
-            if (post == null)
-            {
-                throw new ArgumentNullException("post");
-            }
+		public Compilation Compile(Post post)
+		{
+			var console = SyntaxTree.ParseCompilationUnit("public static readonly StringWriter __Console = new StringWriter();",
+														  options: new ParseOptions(kind: SourceCodeKind.Script));
 
-            var console = SyntaxTree.ParseCompilationUnit("public static readonly StringWriter __Console = new StringWriter();", 
-                                                          options: new ParseOptions(kind: SourceCodeKind.Script));
+			var entry = SyntaxTree.ParseCompilationUnit(EntryPoint);
 
-            var entry = SyntaxTree.ParseCompilationUnit(EntryPoint);
+			var prompt = SyntaxTree.ParseCompilationUnit(BuildScript(post.Content),
+				fileName: "Prompt",options: new ParseOptions(kind: SourceCodeKind.Interactive))
+					.RewriteWith<MissingSemicolonRewriter>();
 
-            var prompt = SyntaxTree.ParseCompilationUnit(BuildScript(post.Content), fileName: "Prompt",
-                                                         options: new ParseOptions(kind: SourceCodeKind.Interactive))
-                                   .RewriteWith<MissingSemicolonRewriter>();
+			var editor = SyntaxTree.ParseCompilationUnit(post.Classes ?? string.Empty,
+				fileName: "Editor", options: new ParseOptions(kind: SourceCodeKind.Script))
+					.RewriteWith<MissingSemicolonRewriter>();
 
-            var editor = SyntaxTree.ParseCompilationUnit(post.Classes ?? string.Empty, fileName: "Editor", 
-                                                         options: new ParseOptions(kind: SourceCodeKind.Script))
-                                   .RewriteWith<MissingSemicolonRewriter>();
+			var compilation = Compile("Untitled", new[] { entry, prompt, editor, console });
 
-            var compilation =  Compile(post.Title ?? "Untitled", new[] { entry, prompt, editor, console });
+			var newPrompt = prompt.RewriteWith(new ConsoleRewriter("__Console", compilation.GetSemanticModel(prompt)));
+			var newEditor = editor.RewriteWith(new ConsoleRewriter("__Console", compilation.GetSemanticModel(editor)));
 
-            var newPrompt = prompt.RewriteWith(new ConsoleRewriter("__Console", compilation.GetSemanticModel(prompt)));
-            var newEditor = editor.RewriteWith(new ConsoleRewriter("__Console", compilation.GetSemanticModel(editor)));
+			return compilation.ReplaceSyntaxTree(prompt, newPrompt)
+				.ReplaceSyntaxTree(editor, newEditor);
+		}
 
-            return compilation.ReplaceSyntaxTree(prompt, newPrompt).ReplaceSyntaxTree(editor, newEditor);
-        }
+		private static Compilation Compile(string compilationName, params SyntaxTree[] syntaxTrees)
+		{
+			var options = new CompilationOptions(assemblyKind: AssemblyKind.ConsoleApplication, usings: DefaultNamespaces);
 
-        public Compilation Compile(string compilationName, params SyntaxTree[] syntaxTrees)
-        {
-            if (string.IsNullOrEmpty(compilationName))
-            {
-                throw new ArgumentNullException("compilationName");
-            }
-            
-            var options = new CompilationOptions(assemblyKind: AssemblyKind.ConsoleApplication, 
-                                                 usings: DefaultNamespaces);
+			var metadataReference = AppDomain.CurrentDomain.GetAssemblies()
+				.Where(x => !x.IsDynamic && !string.IsNullOrEmpty(x.Location))
+				.Select(x => new AssemblyFileReference(x.Location));
 
-			var metadataReference = new List<MetadataReference>();
-			foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().Where(x => !x.IsDynamic && !string.IsNullOrEmpty(x.Location)))
-			{
-				metadataReference.Add(new AssemblyFileReference(assembly.Location));
-			}
+			var compilation = Compilation.Create(compilationName, options, syntaxTrees, metadataReference);
 
-            var compilation = Compilation.Create(compilationName, options, syntaxTrees, metadataReference);
+			return compilation;
+		}
 
-            return compilation;
-        }
+		private static string BuildScript(string content)
+		{
+			var builder = new StringBuilder();
 
-        private static string BuildScript(string content)
-        {
-            var builder = new StringBuilder();
+			builder.AppendLine("public static object Eval() {");
+			builder.AppendLine("#line 1");
+			builder.Append(content);
+			builder.AppendLine("}");
 
-            builder.AppendLine("public static object Eval() {");
-            builder.AppendLine("#line 1");
-            builder.Append(content);
-            builder.AppendLine("}");
+			return builder.ToString();
+		}
 
-            return builder.ToString();
-        }
-
-    }
+	}
 }
