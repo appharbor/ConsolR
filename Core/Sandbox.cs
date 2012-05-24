@@ -60,31 +60,19 @@ namespace Compilify
 
 		private ExecutionResult Execute(string className, string resultProperty)
 		{
-			var result = new ExecutionResult();
 			var type = typeof(ByteCodeLoader);
+
+			var loader = (ByteCodeLoader)_domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
+			var unformattedResult = loader.Run(className, resultProperty, _assemblyBytes);
+
 			var formatter = new ObjectFormatter(maxLineLength: 5120);
-
-			try
+			return new ExecutionResult
 			{
-				var loader = (ByteCodeLoader)_domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
-
-				var unformattedResult = loader.Run(className, resultProperty, _assemblyBytes);
-
-				result.Result = formatter.FormatObject(unformattedResult.ReturnValue);
-				result.ConsoleOutput = unformattedResult.ConsoleOutput;
-				result.ProcessorTime = _domain.MonitoringTotalProcessorTime;
-				result.TotalMemoryAllocated = _domain.MonitoringTotalAllocatedMemorySize;
-			}
-			catch (SerializationException ex)
-			{
-				result.Result = ex.Message;
-			}
-			catch (TargetInvocationException ex)
-			{
-				result.Result = ex.InnerException.ToString();
-			}
-
-			return result;
+				Result = formatter.FormatObject(unformattedResult.ReturnValue),
+				ConsoleOutput = unformattedResult.ConsoleOutput,
+				ProcessorTime = _domain.MonitoringTotalProcessorTime,
+				TotalMemoryAllocated = _domain.MonitoringTotalAllocatedMemorySize,
+			};
 		}
 
 		public void Dispose()
