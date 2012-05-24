@@ -12,114 +12,108 @@ using Roslyn.Scripting.CSharp;
 
 namespace Compilify
 {
-    public sealed class Sandbox : IDisposable
-    {
-        private const string DefaultName = "Sandbox";
+	public sealed class Sandbox : IDisposable
+	{
+		private readonly byte[] _assemblyBytes;
+		private bool _disposed;
+		private readonly AppDomain _domain;
 
-        public Sandbox(byte[] compiledAssemblyBytes)
-            : this(DefaultName, compiledAssemblyBytes) { }
+		public Sandbox(string name, byte[] compiledAssemblyBytes)
+		{
+			_assemblyBytes = compiledAssemblyBytes;
 
-        public Sandbox(string name, byte[] compiledAssemblyBytes)
-        {
-            assemblyBytes = compiledAssemblyBytes;
+			var evidence = new Evidence();
+			evidence.AddHostEvidence(new Zone(SecurityZone.Internet));
 
-            var evidence = new Evidence();
-            evidence.AddHostEvidence(new Zone(SecurityZone.Internet));
+			var permissions = SecurityManager.GetStandardSandbox(evidence);
+			permissions.AddPermission(new SecurityPermission(SecurityPermissionFlag.Execution));
+			permissions.AddPermission(new ReflectionPermission(ReflectionPermissionFlag.RestrictedMemberAccess));
 
-            var permissions = SecurityManager.GetStandardSandbox(evidence);
-            permissions.AddPermission(new SecurityPermission(SecurityPermissionFlag.Execution));
-            permissions.AddPermission(new ReflectionPermission(ReflectionPermissionFlag.RestrictedMemberAccess));
+			var setup = new AppDomainSetup
+			{
+				ApplicationBase = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+				ApplicationName = name,
+				DisallowBindingRedirects = true,
+				DisallowCodeDownload = true,
+				DisallowPublisherPolicy = true
+			};
 
-            var setup = new AppDomainSetup
-                        {
-                            ApplicationBase = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                            ApplicationName = name,
-                            DisallowBindingRedirects = true,
-                            DisallowCodeDownload = true,
-                            DisallowPublisherPolicy = true
-                        };
+			_domain = AppDomain.CurrentDomain;
+		}
 
-			domain = AppDomain.CurrentDomain;
-        }
+		static Sandbox()
+		{
+			AppDomain.MonitoringIsEnabled = true;
+		}
 
-        static Sandbox()
-        {
-            AppDomain.MonitoringIsEnabled = true;
-        }
+		public ExecutionResult Run(string className, string resultProperty, TimeSpan timeout)
+		{
+			var task = Task<ExecutionResult>.Factory.StartNew(() => Execute(className, resultProperty));
 
-        private readonly byte[] assemblyBytes;
-        private readonly AppDomain domain;
-        private bool disposed;
+			if (!task.Wait(timeout))
+			{
+				return new ExecutionResult { Result = "[Execution timed out]" };
+			}
 
-        public ExecutionResult Run(string className, string resultProperty, TimeSpan timeout)
-        {
-            var task = Task<ExecutionResult>.Factory.StartNew(() => Execute(className, resultProperty));
+			return task.Result ?? new ExecutionResult { Result = "null" };
+		}
 
-            if (!task.Wait(timeout))
-            {
-                return new ExecutionResult { Result = "[Execution timed out]" };
-            }
+		private ExecutionResult Execute(string className, string resultProperty)
+		{
+			var result = new ExecutionResult();
+			var type = typeof(ByteCodeLoader);
+			var formatter = new ObjectFormatter(maxLineLength: 5120);
 
-            return task.Result ?? new ExecutionResult { Result = "null" };
-        }
+			try
+			{
+				var loader = (ByteCodeLoader)_domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
 
-        private ExecutionResult Execute(string className, string resultProperty)
-        {
-            var result = new ExecutionResult();
-            var type = typeof(ByteCodeLoader);
-            var formatter = new ObjectFormatter(maxLineLength: 5120);
+				var unformattedResult = loader.Run(className, resultProperty, _assemblyBytes);
 
-            try
-            {
-                var loader = (ByteCodeLoader)domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
-                
-                var unformattedResult = loader.Run(className, resultProperty, assemblyBytes);
+				result.Result = formatter.FormatObject(unformattedResult.ReturnValue);
+				result.ConsoleOutput = unformattedResult.ConsoleOutput;
+				result.ProcessorTime = _domain.MonitoringTotalProcessorTime;
+				result.TotalMemoryAllocated = _domain.MonitoringTotalAllocatedMemorySize;
+			}
+			catch (SerializationException ex)
+			{
+				result.Result = ex.Message;
+			}
+			catch (TargetInvocationException ex)
+			{
+				result.Result = ex.InnerException.ToString();
+			}
 
-                result.Result = (unformattedResult != null) ? formatter.FormatObject(unformattedResult.ReturnValue) : "null";
-                result.ConsoleOutput = (unformattedResult != null) ? unformattedResult.ConsoleOutput : string.Empty;
-                result.ProcessorTime = domain.MonitoringTotalProcessorTime;
-                result.TotalMemoryAllocated = domain.MonitoringTotalAllocatedMemorySize;
-            }
-            catch (SerializationException ex)
-            {
-                result.Result = ex.Message;
-            }
-            catch (TargetInvocationException ex)
-            {
-                result.Result = ex.InnerException.ToString();
-            }
+			return result;
+		}
 
-            return result;
-        }
+		public void Dispose()
+		{
+			if (!_disposed)
+			{
+				_disposed = true;
+			}
+		}
 
-        public void Dispose()
-        {
-            if (!disposed)
-            {
-                disposed = true;
-               // AppDomain.Unload(domain);
-            }
-        }
+		private sealed class ByteCodeLoader : MarshalByRefObject
+		{
+			public ByteCodeLoader() { }
 
-        private sealed class ByteCodeLoader : MarshalByRefObject
-        {
-            public ByteCodeLoader() { }
+			public SandboxResult Run(string className, string resultProperty, byte[] compiledAssembly)
+			{
+				var assembly = Assembly.Load(compiledAssembly);
+				assembly.EntryPoint.Invoke(null, new object[] { });
 
-            public SandboxResult Run(string className, string resultProperty, byte[] compiledAssembly)
-            {
-                var assembly = Assembly.Load(compiledAssembly);
-                assembly.EntryPoint.Invoke(null, new object[] { });
+				var console = (StringWriter)assembly.GetType("Script").GetField("__Console").GetValue(null);
 
-                var console = (StringWriter)assembly.GetType("Script").GetField("__Console").GetValue(null);
+				var result = new SandboxResult
+				{
+					ConsoleOutput = console.ToString(),
+					ReturnValue = assembly.GetType(className).GetProperty(resultProperty).GetValue(null, null)
+				};
 
-                var result = new SandboxResult
-                             {
-                                 ConsoleOutput = console.ToString(),
-                                 ReturnValue = assembly.GetType(className).GetProperty(resultProperty).GetValue(null, null)
-                             };
-
-                return result;
-            }
-        }
-    }
+				return result;
+			}
+		}
+	}
 }

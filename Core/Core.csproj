@@ -61,11 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExecuteCommand.cs" />
-    <Compile Include="Extensions\CompilationExtensions.cs" />
     <Compile Include="Extensions\SyntaxTreeExtensions.cs" />
     <Compile Include="Models\ExecutionResult.cs" />
-    <Compile Include="Models\Incrementor.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\SandboxResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,7 +74,9 @@
     <Compile Include="Services\MissingSemicolonRewriter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
