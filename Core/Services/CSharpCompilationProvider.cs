@@ -79,7 +79,7 @@ namespace Compilify.Services
                                                  usings: DefaultNamespaces);
 
 			var metadataReference = new List<MetadataReference>();
-			foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().Where(x => !x.IsDynamic))
+			foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().Where(x => !x.IsDynamic && !string.IsNullOrEmpty(x.Location)))
 			{
 				metadataReference.Add(new AssemblyFileReference(assembly.Location));
 			}
