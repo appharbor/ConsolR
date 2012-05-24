@@ -39,7 +39,7 @@ namespace Compilify
                             DisallowPublisherPolicy = true
                         };
 
-            domain = AppDomain.CreateDomain(name, null, setup, permissions);
+			domain = AppDomain.CurrentDomain;
         }
 
         static Sandbox()
@@ -97,7 +97,7 @@ namespace Compilify
             if (!disposed)
             {
                 disposed = true;
-                AppDomain.Unload(domain);
+               // AppDomain.Unload(domain);
             }
         }
 

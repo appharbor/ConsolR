@@ -5,6 +5,8 @@ using Compilify.Extensions;
 using Compilify.Models;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Compilify.Services
 {
@@ -76,17 +78,13 @@ namespace Compilify.Services
             var options = new CompilationOptions(assemblyKind: AssemblyKind.ConsoleApplication, 
                                                  usings: DefaultNamespaces);
 
-            // Load basic .NET assemblies into our sandbox
-            var mscorlib = Assembly.Load("mscorlib,Version=4.0.0.0,Culture=neutral,PublicKeyToken=b77a5c561934e089");
-            var system = Assembly.Load("System,Version=4.0.0.0,Culture=neutral,PublicKeyToken=b77a5c561934e089");
-            var core = Assembly.Load("System.Core,Version=4.0.0.0,Culture=neutral,PublicKeyToken=b77a5c561934e089");
+			var metadataReference = new List<MetadataReference>();
+			foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().Where(x => !x.IsDynamic))
+			{
+				metadataReference.Add(new AssemblyFileReference(assembly.Location));
+			}
 
-            var compilation = Compilation.Create(compilationName, options, syntaxTrees,
-                                                 new MetadataReference[] { 
-                                                     new AssemblyFileReference(core.Location), 
-                                                     new AssemblyFileReference(system.Location),
-                                                     new AssemblyFileReference(mscorlib.Location)
-                                                 });
+            var compilation = Compilation.Create(compilationName, options, syntaxTrees, metadataReference);
 
             return compilation;
         }
