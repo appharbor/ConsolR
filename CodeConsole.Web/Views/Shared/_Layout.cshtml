@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <title>@(ViewBag.Title != null
+           ? ViewBag.Title + " - Compilify.net"
+           : "Code, Collaborate, Compile - Compilify.net")</title>
+
+    <meta name="description"  
+          content="Compilify.net is a place for .NET developers to write, save, share, and run their C# code." />
+    
+    <meta name="keywords" content=".net, c#, c-sharp, compile, build, share, paste, post, code, roslyn"/>
+
+    <meta name="author" content="Justin Rusbatch" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
+
+    <link type="text/css" rel="stylesheet" 
+          href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" />
+
+    <link type="text/css" rel="stylesheet"
+          href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/css")" />
+</head>
+<body dir="ltr">
+    <div id="header" class="navbar">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="@Url.Action("Index", "Console")">
+                    <h1>Console<strong>.net</strong> <small>alpha</small></h1>
+                </a>
+                <div class="appharbor pull-right">
+                    <a href="http://appharbor.com">
+                        <img src="~/assets/img/appharbor.png" alt="Hosted by AppHarbor"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    @RenderBody()
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/js")"></script>
+    
+    @RenderSection("PageScripts", false)
+</body>
+</html>
