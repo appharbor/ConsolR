@@ -80,9 +80,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\mongocsharpdriver.1.4.2\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.4\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\packages\protobuf-net.2.0.0.480\lib\net40\protobuf-net.dll</HintPath>
@@ -111,16 +110,14 @@
       <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.VisualBasic.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SignalR, Version=0.5.84.10501, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SignalR.Server.0.5.84-rc\lib\net40\SignalR.dll</HintPath>
+    <Reference Include="SignalR">
+      <HintPath>..\packages\SignalR.Server.0.5.0\lib\net40\SignalR.dll</HintPath>
     </Reference>
-    <Reference Include="SignalR.Hosting.AspNet, Version=0.5.84.10501, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.84-rc\lib\net40\SignalR.Hosting.AspNet.dll</HintPath>
+    <Reference Include="SignalR.Hosting.AspNet">
+      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.0\lib\net40\SignalR.Hosting.AspNet.dll</HintPath>
     </Reference>
     <Reference Include="SignalR.Hosting.Common">
-      <HintPath>..\packages\SignalR.Hosting.Common.0.5.84-rc\lib\net40\SignalR.Hosting.Common.dll</HintPath>
+      <HintPath>..\packages\SignalR.Hosting.Common.0.5.0\lib\net40\SignalR.Hosting.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -268,6 +265,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Assets\js\vendor\jquery.signalR-0.5rc.js" />
+    <Content Include="Scripts\jquery.signalR-0.5.0.js" />
+    <Content Include="Scripts\jquery.signalR-0.5.0.min.js" />
+    <Content Include="Scripts\jquery.signalR-0.5rc.js" />
+    <Content Include="Scripts\jquery.signalR-0.5rc.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -285,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Infrastructure\Providers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
