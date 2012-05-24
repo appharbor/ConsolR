@@ -72,7 +72,6 @@
     <Compile Include="Models\Incrementor.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\SandboxResult.cs" />
-    <Compile Include="Models\WorkerResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sandbox.cs" />
     <Compile Include="Services\ConsoleRewriter.cs" />
