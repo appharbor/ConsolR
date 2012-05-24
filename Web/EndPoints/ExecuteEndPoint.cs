@@ -7,6 +7,7 @@ using Compilify.Web.Services;
 using Newtonsoft.Json;
 using SignalR;
 using SignalR.Hosting;
+using Compilify.Services;
 
 namespace Compilify.Web.EndPoints
 {
@@ -26,38 +27,16 @@ namespace Compilify.Web.EndPoints
         private const int DefaultExecutionTimeout = 30;
 
         private static readonly TimeSpan ExecutionTimeout;
-
+		private static readonly CSharpExecutor Executer = new CSharpExecutor();
         /// <summary>
         /// Handle messages sent by the client.</summary>
         protected override Task OnReceivedAsync(IRequest request, string connectionId, string data)
         {
             var post = JsonConvert.DeserializeObject<Post>(data);
 
-            var command = new ExecuteCommand
-                          {
-                              ClientId = connectionId,
-                              Code = post.Content,
-                              Classes = post.Classes,
-                              Submitted = DateTime.UtcNow,
-                              TimeoutPeriod = ExecutionTimeout
-                          };
+			var result = Executer.Execute(post);
 
-            var message = command.GetBytes();
-
-            var gateway = DependencyResolver.Current.GetService<RedisConnectionGateway>();
-            var redis = gateway.GetConnection();
-
-            return redis.Lists.AddLast(0, "queue:execute", message)
-                              .ContinueWith(t => {
-                                  if (t.IsFaulted) {
-                                      return Connection.Send(connectionId, new {
-                                          status = "error",
-                                          message = t.Exception != null ? t.Exception.Message : null
-                                      });
-                                  }
-
-                                  return Connection.Send(connectionId, new { status = "ok" });
-                              });
+			return Connection.Send(connectionId, new { status = "ok", data = result.Result });
         }
     }
 }
