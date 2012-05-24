@@ -71,6 +71,7 @@
     <Compile Include="Services\CSharpExecutor.cs" />
     <Compile Include="Services\CSharpCompilationProvider.cs" />
     <Compile Include="Services\CSharpValidator.cs" />
+    <Compile Include="Services\ICSharpCompilationProvider.cs" />
     <Compile Include="Services\MissingSemicolonRewriter.cs" />
   </ItemGroup>
   <ItemGroup>

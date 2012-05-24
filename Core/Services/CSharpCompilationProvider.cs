@@ -9,11 +9,6 @@ using Roslyn.Compilers.CSharp;
 
 namespace Compilify.Services
 {
-    public interface ICSharpCompilationProvider
-    {
-        Compilation Compile(Post post);
-    }
-
     public class CSharpCompilationProvider : ICSharpCompilationProvider
     {
         private const string EntryPoint = 
