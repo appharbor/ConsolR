@@ -16,7 +16,7 @@ namespace Compilify.Services
 
 		private readonly ICSharpCompilationProvider compiler;
 
-		public ExecutionResult Execute(Post post)
+		public ExecutionResult Execute(SourceCode post)
 		{
 			var compilation = compiler.Compile(post);
 

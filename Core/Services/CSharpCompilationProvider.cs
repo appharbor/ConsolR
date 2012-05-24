@@ -34,7 +34,7 @@ namespace Compilify.Services
                 "System.Collections.Generic"
             });
 
-		public Compilation Compile(Post post)
+		public Compilation Compile(SourceCode post)
 		{
 			var console = SyntaxTree.ParseCompilationUnit("public static readonly StringWriter __Console = new StringWriter();",
 														  options: new ParseOptions(kind: SourceCodeKind.Script));

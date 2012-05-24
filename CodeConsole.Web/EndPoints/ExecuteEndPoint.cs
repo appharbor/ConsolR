@@ -29,7 +29,7 @@ namespace Compilify.Web.EndPoints
 
 		protected override Task OnReceivedAsync(IRequest request, string connectionId, string data)
 		{
-			var post = JsonConvert.DeserializeObject<Post>(data);
+			var post = JsonConvert.DeserializeObject<SourceCode>(data);
 
 			var result = Executer.Execute(post);
 

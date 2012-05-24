@@ -5,6 +5,6 @@ namespace Compilify.Services
 {
 	public interface ICSharpCompilationProvider
 	{
-		Compilation Compile(Post post);
+		Compilation Compile(SourceCode post);
 	}
 }

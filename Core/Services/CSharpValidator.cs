@@ -14,7 +14,7 @@ namespace Compilify.Services
 
 		private readonly ICSharpCompilationProvider compiler;
 
-		public IEnumerable<IDiagnostic> GetCompilationErrors(Post post)
+		public IEnumerable<IDiagnostic> GetCompilationErrors(SourceCode post)
 		{
 			using (var stream = new MemoryStream())
 			{
