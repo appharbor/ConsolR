@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 using Compilify.Models;
-using Compilify.Web.Services;
+using Compilify.Services;
 using Newtonsoft.Json;
 using SignalR;
 using SignalR.Hosting;
-using Compilify.Services;
 
 namespace Compilify.Web.EndPoints
 {

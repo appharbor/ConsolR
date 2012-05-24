@@ -204,33 +204,19 @@
   <ItemGroup>
     <Compile Include="App_Start\DependencyInjection.cs" />
     <Compile Include="App_Start\MongoDbInitializer.cs" />
-    <Compile Include="Controllers\AuthController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EndPoints\ExecuteEndPoint.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\CompilifyIdentity.cs" />
-    <Compile Include="Infrastructure\Extensions\HtmlHelperExtensions.cs" />
-    <Compile Include="Infrastructure\DependencyInjection\MongoDbModule.cs" />
     <Compile Include="Infrastructure\DependencyInjection\MvcModule.cs" />
-    <Compile Include="Infrastructure\DependencyInjection\RedisModule.cs" />
-    <Compile Include="Infrastructure\Extensions\IdentityExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\RouteCollectionExtensions.cs" />
     <Compile Include="Infrastructure\LowercaseRoute.cs" />
-    <Compile Include="Infrastructure\Providers\MongoDbMembershipProvider.cs" />
-    <Compile Include="Infrastructure\RequireHttpsOnAppHarborAttribute.cs" />
-    <Compile Include="Models\SignInViewModel.cs" />
+    <Compile Include="Infrastructure\RequireHttpsAttribute.cs" />
     <Compile Include="Models\ValidateViewModel.cs" />
-    <Compile Include="Services\JobDoneMessageRelay.cs" />
     <Compile Include="Infrastructure\TaskAsyncHelper.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Base32Encoder.cs" />
-    <Compile Include="Services\PageContentRepository.cs" />
-    <Compile Include="Services\RedisConnectionException.cs" />
-    <Compile Include="Services\RedisConnectionGateway.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\vendor\bootstrap-2.0.2.css" />
@@ -267,8 +253,6 @@
     <Content Include="Assets\js\vendor\jquery.signalR-0.5rc.js" />
     <Content Include="Scripts\jquery.signalR-0.5.0.js" />
     <Content Include="Scripts\jquery.signalR-0.5.0.min.js" />
-    <Content Include="Scripts\jquery.signalR-0.5rc.js" />
-    <Content Include="Scripts\jquery.signalR-0.5rc.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -280,7 +264,6 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Show.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -302,9 +285,6 @@
     <Content Include="Assets\fonts\roboto-light-webfont.ttf" />
     <Content Include="Assets\fonts\roboto-light-webfont.woff" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Shared\_Share.cshtml" />
-    <Content Include="Views\Auth\SignIn.cshtml" />
-    <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Assets\fonts\roboto-thin-webfont.eot" />
     <Content Include="Assets\fonts\roboto-thin-webfont.ttf" />
     <Content Include="Assets\fonts\roboto-thin-webfont.woff" />

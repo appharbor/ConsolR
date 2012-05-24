@@ -12,8 +12,6 @@
           content="Compilify.net is a place for .NET developers to write, save, share, and run their C# code." />
     
     <meta name="keywords" content=".net, c#, c-sharp, compile, build, share, paste, post, code, roslyn"/>
-    
-    @Html.Insights()
 
     <meta name="author" content="Justin Rusbatch" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +23,6 @@
 
     <link type="text/css" rel="stylesheet"
           href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/css")" />
-          
-    @Html.Analytics()
 </head>
 <body dir="ltr">
     <div id="header" class="navbar">
@@ -43,8 +39,6 @@
                         <img src="~/assets/img/appharbor.png" alt="Hosted by AppHarbor"/>
                     </a>
                 </div>
-
-                @Html.Partial("_Share")
             </div>
         </div>
     </div>
