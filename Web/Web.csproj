@@ -205,7 +205,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ConsoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="EndPoints\ExecuteEndPoint.cs" />
     <Compile Include="Global.asax.cs">
@@ -264,7 +264,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Console\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>

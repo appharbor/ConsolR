@@ -59,10 +59,10 @@ namespace Compilify.Web {
             );
 
 			routes.MapLowercaseRoute(
-	name: "console",
-	url: "console",
-	defaults: new { controller = "Home", action = "Index" },
-	constraints: new { httpMethod = new HttpMethodConstraint("GET") }
+				name: "console",
+				url: "console",
+				defaults: new { controller = "Console", action = "Index" },
+				constraints: new { httpMethod = new HttpMethodConstraint("GET") }
 );
 
             routes.MapConnection<ExecuteEndPoint>("execute", "execute/{*operation}");
