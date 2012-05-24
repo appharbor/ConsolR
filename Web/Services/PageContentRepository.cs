@@ -17,17 +17,7 @@ namespace Compilify.Web.Services
     public class PostRepository : IPostRepository
     {
         public PostRepository(MongoDatabase mongoDatabase) {
-            db = mongoDatabase;
 
-            db.GetCollection("posts").EnsureIndex(
-                IndexKeys.Descending("Slug", "Version"), 
-                IndexOptions.SetUnique(true)
-            );
-
-            db.GetCollection("sequences").EnsureIndex(
-                IndexKeys.Descending("Name"), 
-                IndexOptions.SetUnique(true)
-            );
         }
 
         private readonly MongoDatabase db;

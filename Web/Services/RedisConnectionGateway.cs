@@ -14,7 +14,7 @@ namespace Compilify.Web.Services
     {
         private RedisConnectionGateway()
         {
-            connection = CreateConnection();
+            //connection = CreateConnection();
         }
 
         private const string RedisConnectionFailed = "Redis connection failed.";
