@@ -40,9 +40,16 @@ namespace Compilify.Web {
             routes.MapLowercaseRoute(
                 name: "Root",
                 url: "",
-                defaults: new { controller = "Home", action = "Index" },
+                defaults: new { controller = "User", action = "Index" },
                 constraints: new { httpMethod = new HttpMethodConstraint("GET") }
             );
+
+			routes.MapLowercaseRoute(
+	name: "create-user",
+	url: "",
+	defaults: new { controller = "User", action = "Create" },
+	constraints: new { httpMethod = new HttpMethodConstraint("POST") }
+);
 
             routes.MapLowercaseRoute(
                 name: "validate",
@@ -50,6 +57,13 @@ namespace Compilify.Web {
                 defaults: new { controller = "Home", action = "Validate" },
                 constraints: new { httpMethod = new HttpMethodConstraint("POST") }
             );
+
+			routes.MapLowercaseRoute(
+	name: "console",
+	url: "console",
+	defaults: new { controller = "Home", action = "Index" },
+	constraints: new { httpMethod = new HttpMethodConstraint("GET") }
+);
 
             routes.MapConnection<ExecuteEndPoint>("execute", "execute/{*operation}");
             routes.MapRoute(

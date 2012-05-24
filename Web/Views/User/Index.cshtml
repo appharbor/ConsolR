@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Foo.Core.Model.User>
+
+<h2>User Index</h2>
+
+<ul>
+	@foreach (var user in Model)
+	{
+		<li>@user.Name (@user.EmailAddress)</li>
+	}
+</ul>
+
+@using(Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+	<input type="text" name="Name" placeholder="Name" />
+	<input type="text" name="EmailAddress" placeholder="Email address"/>
+	<input type="submit" value="Submit" />
+}
