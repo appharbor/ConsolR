@@ -34,7 +34,7 @@ namespace Compilify.Web.Controllers
                                 Errors = errors
                             };
 
-            return View("Show", viewModel);
+            return View(viewModel);
         }
 
         [HttpPost]
