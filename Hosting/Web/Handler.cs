@@ -9,7 +9,7 @@ using Roslyn.Compilers;
 
 namespace ConsolR.Hosting
 {
-	public class ConsolRHandler : IHttpHandler
+	public class Handler : IHttpHandler
 	{
 		public void ProcessRequest(HttpContext context)
 		{
