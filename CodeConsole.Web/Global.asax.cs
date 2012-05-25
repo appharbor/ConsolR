@@ -7,7 +7,7 @@ using ConsolR.Web.Infrastructure.Extensions;
 using SignalR;
 using RequireHttpsAttribute = ConsolR.Web.Infrastructure.RequireHttpsAttribute;
 
-namespace CodeConsole.Web
+namespace ConsolR.Web
 {
 	public class MvcApplication : HttpApplication
 	{
