@@ -9,13 +9,6 @@ namespace ConsolR.Web.Controllers
 {
 	public class ConsoleController : AsyncController
 	{
-		public ConsoleController()
-		{
-			compiler = new CSharpValidator(new CSharpCompilationProvider());
-		}
-
-		private readonly CSharpValidator compiler;
-
 		[HttpGet]
 		public ActionResult Index()
 		{
@@ -26,23 +19,22 @@ namespace ConsolR.Web.Controllers
 		[ValidateInput(false)]
 		public ActionResult Validate(string command, string classes)
 		{
-			var post = new SourceCode { Classes = classes, Content = command };
+			var compiler = new CSharpValidator(new CSharpCompilationProvider());
+			var post = new SourceCode
+			{
+				Classes = classes,
+				Content = command
+			};
 
 			var errors = compiler.GetCompilationErrors(post)
-								 .Where(x => x.Info.Severity > DiagnosticSeverity.Warning)
-								 .Select(x => new EditorError
-											  {
-												  Location = x.Location.GetLineSpan(true),
-												  Message = x.Info.GetMessage()
-											  });
+				.Where(x => x.Info.Severity > DiagnosticSeverity.Warning)
+				.Select(x => new
+				{
+					Location = x.Location.GetLineSpan(true),
+					Message = x.Info.GetMessage()
+				});
 
 			return Json(new { status = "ok", data = errors });
-		}
-
-		private class EditorError
-		{
-			public FileLinePositionSpan Location { get; set; }
-			public string Message { get; set; }
 		}
 	}
 }
