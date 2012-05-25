@@ -1,5 +1,5 @@
 ﻿using System.Web.Routing;
-using ConsolR.Hosting.Web;
+using ConsolR.Hosting;
 using SignalR;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]

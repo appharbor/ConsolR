@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using SignalR;
 using SignalR.Hosting;
 
-namespace ConsolR.Hosting.Web
+namespace ConsolR.Hosting
 {
 	public class ExecuteEndPoint : PersistentConnection
 	{
