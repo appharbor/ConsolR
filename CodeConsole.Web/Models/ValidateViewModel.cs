@@ -3,12 +3,6 @@ using Roslyn.Compilers;
 
 namespace ConsolR.Web.Models
 {
-	public class ValidateViewModel
-	{
-		public string Command { get; set; }
-		public string Classes { get; set; }
-	}
-
 	[JsonObject]
 	public class EditorError
 	{

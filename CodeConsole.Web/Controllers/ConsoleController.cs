@@ -24,9 +24,9 @@ namespace ConsolR.Web.Controllers
 
 		[HttpPost]
 		[ValidateInput(false)]
-		public ActionResult Validate(ValidateViewModel viewModel)
+		public ActionResult Validate(string command, string classes)
 		{
-			var post = new SourceCode { Classes = viewModel.Classes, Content = viewModel.Command };
+			var post = new SourceCode { Classes = classes, Content = command };
 
 			var errors = compiler.GetCompilationErrors(post)
 								 .Where(x => x.Info.Severity > DiagnosticSeverity.Warning)
