@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Routing;
+﻿using System.Web.Routing;
+using ConsolR.Hosting.Web;
 using SignalR;
 
 namespace ConsolR.Hosting
 {
 	[assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
+
 	public static class Bootstrapper
 	{
 		public static void PreApplicationStart()

@@ -1,24 +1,11 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
-using System.Web.Routing;
 using System.Web.Script.Serialization;
 using ConsolR.Core.Models;
 using ConsolR.Core.Services;
-using ConsolR.Hosting;
-using Newtonsoft.Json;
 using Roslyn.Compilers;
-using SignalR;
-using SignalR.Hosting;
-
-[assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
 
 namespace ConsolR.Hosting
 {
@@ -68,41 +55,5 @@ namespace ConsolR.Hosting
 		}
 
 		public bool IsReusable { get { return false; } }
-	}
-
-	public class ExecuteEndPoint : PersistentConnection
-	{
-		public static TimeSpan ExecutionTimeout;
-		private static readonly CSharpExecutor Executer = new CSharpExecutor();
-
-		static ExecuteEndPoint()
-		{
-			int timeout;
-			if (!int.TryParse(ConfigurationManager.AppSettings["ConsolR.ExecutionTimeout"], out timeout))
-			{
-				timeout = 30;
-			};
-			ExecutionTimeout = TimeSpan.FromSeconds(timeout);
-		}
-
-		public override Task ProcessRequestAsync(HostContext context)
-		{
-			var httpContext = (HttpContextWrapper)context.Items["System.Web.HttpContext"];
-			BasicAuthenticator.Authenticate(httpContext);
-
-			return base.ProcessRequestAsync(context);
-		}
-
-		protected override Task OnReceivedAsync(IRequest request, string connectionId, string data)
-		{
-			var sourceCode = JsonConvert.DeserializeObject<SourceCode>(data);
-			var result = Executer.Execute(sourceCode, ExecutionTimeout);
-
-			return Connection.Send(connectionId, new
-			{
-				status = "ok",
-				data = result.Result,
-			});
-		}
 	}
 }
