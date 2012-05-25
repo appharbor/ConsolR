@@ -1,11 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using System.Web.Routing;
-using ConsolR.Web.EndPoints;
-using ConsolR.Web.Infrastructure.Extensions;
-using SignalR;
-using RequireHttpsAttribute = ConsolR.Web.Infrastructure.RequireHttpsAttribute;
 
 namespace ConsolR.Web
 {
@@ -32,35 +27,20 @@ namespace ConsolR.Web
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-			routes.MapLowercaseRoute(
+			routes.MapRoute(
 				name: "Root",
 				url: "",
 				defaults: new { controller = "User", action = "Index" },
 				constraints: new { httpMethod = new HttpMethodConstraint("GET") }
 			);
 
-			routes.MapLowercaseRoute(
-	name: "create-user",
-	url: "",
-	defaults: new { controller = "User", action = "Create" },
-	constraints: new { httpMethod = new HttpMethodConstraint("POST") }
-);
-
-			routes.MapLowercaseRoute(
-				name: "validate",
-				url: "validate",
-				defaults: new { controller = "Console", action = "Validate" },
+			routes.MapRoute(
+				name: "create-user",
+				url: "",
+				defaults: new { controller = "User", action = "Create" },
 				constraints: new { httpMethod = new HttpMethodConstraint("POST") }
 			);
 
-			routes.MapLowercaseRoute(
-				name: "console",
-				url: "console",
-				defaults: new { controller = "Console", action = "Index" },
-				constraints: new { httpMethod = new HttpMethodConstraint("GET") }
-);
-
-			routes.MapConnection<ExecuteEndPoint>("execute", "execute/{*operation}");
 			routes.MapRoute(
 				"Error",
 				"Error/{status}",

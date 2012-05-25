@@ -83,7 +83,7 @@
         
         trackEvent('Code', 'Validate', pathname);
 
-        return $.ajax('/validate', {
+        return $.ajax('/consolr/validate', {
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ 'Command': command, 'Classes': classes }),
@@ -141,7 +141,7 @@
         
         if (_.isString(command) && command.length > 0) {
             trackEvent('Code', 'Execute', window.location.pathname);
-            connection.send(JSON.stringify({ 'Content': command, 'Classes': classes }));
+            connection.send(JSON.stringify({ 'Command': command, 'Classes': classes }));
             $('#footer:not(.loading)').addClass('loading');
         }
     }
@@ -157,7 +157,7 @@
         //
         // Set up the SignalR connection
         //
-        connection = new EndpointConnection('/execute', {
+        connection = new EndpointConnection('/consolr/execute', {
             onReceived: function (msg) {
                 if (msg && msg.status === "ok") {
                     setResult(msg.data);

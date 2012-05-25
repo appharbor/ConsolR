@@ -41,7 +41,7 @@ namespace ConsolR.Services
 
 			var entry = SyntaxTree.ParseCompilationUnit(EntryPoint);
 
-			var prompt = SyntaxTree.ParseCompilationUnit(BuildScript(post.Content),
+			var prompt = SyntaxTree.ParseCompilationUnit(BuildScript(post.Command),
 				fileName: "Prompt",options: new ParseOptions(kind: SourceCodeKind.Interactive))
 					.RewriteWith<MissingSemicolonRewriter>();
 

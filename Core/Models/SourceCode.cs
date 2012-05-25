@@ -3,6 +3,6 @@
 	public class SourceCode
 	{
 		public string Classes { get; set; }
-		public string Content { get; set; }
+		public string Command { get; set; }
 	}
 }

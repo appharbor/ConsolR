@@ -159,18 +159,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ConsoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="EndPoints\ExecuteEndPoint.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ConsolRHandler.ashx.cs">
       <DependentUpon>ConsolRHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Extensions\RouteCollectionExtensions.cs" />
-    <Compile Include="Infrastructure\LowercaseRoute.cs" />
-    <Compile Include="Infrastructure\RequireHttpsAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,7 +194,7 @@
     <Content Include="Assets\consolr\js\vendor\json2.js" />
     <Content Include="Assets\consolr\js\vendor\shortcut.js" />
     <Content Include="Assets\consolr\js\vendor\underscore-1.3.1.js" />
-    <Content Include="ConsolR.html" />
+    <Content Include="Assets\consolr\Index.html" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
@@ -216,7 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\Providers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
