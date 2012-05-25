@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using ConsolR.Models;
 using ConsolR.Services;
-using ConsolR.Web.Models;
 using Roslyn.Compilers;
+using Newtonsoft.Json;
 
 namespace ConsolR.Web.Controllers
 {
@@ -37,6 +37,12 @@ namespace ConsolR.Web.Controllers
 											  });
 
 			return Json(new { status = "ok", data = errors });
+		}
+
+		private class EditorError
+		{
+			public FileLinePositionSpan Location { get; set; }
+			public string Message { get; set; }
 		}
 	}
 }
