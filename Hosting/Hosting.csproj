@@ -102,7 +102,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="eula.rtf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
