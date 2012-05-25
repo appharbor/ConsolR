@@ -11,7 +11,7 @@ namespace Compilify.Web.EndPoints
 {
 	public class ExecuteEndPoint : PersistentConnection
 	{
-		private static readonly TimeSpan ExecutionTimeout;
+		public static TimeSpan ExecutionTimeout;
 		private static readonly CSharpExecutor Executer = new CSharpExecutor();
 
 		static ExecuteEndPoint()
@@ -23,7 +23,7 @@ namespace Compilify.Web.EndPoints
 		protected override Task OnReceivedAsync(IRequest request, string connectionId, string data)
 		{
 			var sourceCode = JsonConvert.DeserializeObject<SourceCode>(data);
-			var result = Executer.Execute(sourceCode);
+			var result = Executer.Execute(sourceCode, ExecutionTimeout);
 
 			return Connection.Send(connectionId, new 
 			{

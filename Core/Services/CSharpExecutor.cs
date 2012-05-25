@@ -16,7 +16,7 @@ namespace Compilify.Services
 
 		private readonly ICSharpCompilationProvider compiler;
 
-		public ExecutionResult Execute(SourceCode sourceCode)
+		public ExecutionResult Execute(SourceCode sourceCode, TimeSpan timeout)
 		{
 			var compilation = compiler.Compile(sourceCode);
 
@@ -33,10 +33,8 @@ namespace Compilify.Services
 				compiledAssembly = stream.ToArray();
 			}
 
-			using (var sandbox = new Sandbox(compiledAssembly))
-			{
-				return sandbox.Run("EntryPoint", "Result", TimeSpan.FromSeconds(5));
-			}
+			var sandbox = new Sandbox(compiledAssembly);
+			return sandbox.Run("EntryPoint", "Result", timeout);
 		}
 	}
 }

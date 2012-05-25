@@ -10,7 +10,6 @@ namespace Compilify
 	public sealed class Sandbox
 	{
 		private readonly byte[] _assemblyBytes;
-		private bool _disposed;
 		private readonly AppDomain _domain;
 
 		public Sandbox(byte[] compiledAssemblyBytes)
