@@ -36,9 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -156,17 +153,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ConsolRHandler.ashx.cs">
       <DependentUpon>ConsolRHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Entity.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Persistence\Configuration.cs" />
-    <Compile Include="Persistence\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,11 +189,7 @@
     <Content Include="Assets\consolr\js\vendor\underscore-1.3.1.js" />
     <Content Include="Assets\consolr\Index.html" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.4.js" />
-    <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Assets\consolr\js\vendor\jquery.signalR-0.5.0.js" />
-    <Content Include="Scripts\jquery.signalR-0.5.0.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -217,24 +205,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\_ViewStart.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Console\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\User\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConsolR.Core\ConsolR.Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{8F2EA92A-1519-482E-9808-DACB2CA67503}</Project>
-      <Name>ConsolR.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

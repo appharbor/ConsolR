@@ -26,26 +26,6 @@ namespace ConsolR.Web
 		private static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-			routes.MapRoute(
-				name: "Root",
-				url: "",
-				defaults: new { controller = "User", action = "Index" },
-				constraints: new { httpMethod = new HttpMethodConstraint("GET") }
-			);
-
-			routes.MapRoute(
-				name: "create-user",
-				url: "",
-				defaults: new { controller = "User", action = "Create" },
-				constraints: new { httpMethod = new HttpMethodConstraint("POST") }
-			);
-
-			routes.MapRoute(
-				"Error",
-				"Error/{status}",
-				 new { controller = "Error", action = "Index", status = UrlParameter.Optional }
-			);
 		}
 	}
 }
