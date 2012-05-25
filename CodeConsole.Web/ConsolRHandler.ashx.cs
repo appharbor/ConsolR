@@ -5,12 +5,12 @@ using System.Web;
 
 namespace ConsolR.Web
 {
-	public class ConsolR : IHttpHandler
+	public class ConsolRHandler : IHttpHandler
 	{
 		public void ProcessRequest(HttpContext context)
 		{
-			context.Response.ContentType = "text/plain";
-			context.Response.Write("Hello World");
+			context.Response.ContentType = "text/html";
+			context.Response.WriteFile("~/consolr.html");
 		}
 
 		public bool IsReusable

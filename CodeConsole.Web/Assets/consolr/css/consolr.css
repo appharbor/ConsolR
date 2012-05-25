@@ -176,7 +176,7 @@ strong {
 #footer .results pre {
     min-height: 100px;
 
-    background: #e6e6e6 url(/assets/img/observe.png) no-repeat bottom right;
+    background: #e6e6e6 url(/assets/consolr/img/observe.png) no-repeat bottom right;
 
     margin-bottom: 0;
     
@@ -464,11 +464,11 @@ h1 {
 }
 
 #define .editor {
-    background: #fff url(/assets/img/define.png) no-repeat bottom right;
+    background: #fff url(/assets/consolr/img/define.png) no-repeat bottom right;
 }
 
 #execute .editor {
-    background: #fff url(/assets/img/execute.png) no-repeat bottom right;
+    background: #fff url(/assets/consolr/img/execute.png) no-repeat bottom right;
 }
 
 /* About 

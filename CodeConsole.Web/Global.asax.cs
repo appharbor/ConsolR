@@ -19,7 +19,6 @@ namespace ConsolR.Web
 			MvcHandler.DisableMvcResponseHeader = true;
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
-			RegisterBundles(BundleTable.Bundles);
 			RegisterRoutes(RouteTable.Routes);
 		}
 
@@ -67,40 +66,6 @@ namespace ConsolR.Web
 				"Error/{status}",
 				 new { controller = "Error", action = "Index", status = UrlParameter.Optional }
 			);
-		}
-
-		private static void RegisterBundles(BundleCollection bundles)
-		{
-			var css = new Bundle("~/css");
-			css.AddFile("~/assets/css/vendor/bootstrap-2.0.2.css");
-			css.AddFile("~/assets/css/vendor/font-awesome.css");
-			css.AddFile("~/assets/css/vendor/codemirror-2.23.css");
-			css.AddFile("~/assets/css/vendor/codemirror-neat-2.23.css");
-			css.AddFile("~/assets/css/consolr.css");
-			bundles.Add(css);
-
-			var js = new Bundle("~/js");
-			js.AddFile("~/assets/js/vendor/json2.js");
-			js.AddFile("~/assets/js/vendor/underscore-1.3.1.js");
-			js.AddFile("~/assets/js/vendor/backbone-0.9.2.js");
-			js.AddFile("~/assets/js/vendor/bootstrap-2.0.2.js");
-			js.AddFile("~/assets/js/vendor/codemirror-2.23.js");
-			js.AddFile("~/assets/js/vendor/codemirror-clike-2.23.js");
-			js.AddFile("~/assets/js/vendor/jquery.signalr-0.5rc.js");
-			js.AddFile("~/assets/js/vendor/jquery.validate-1.8.0.js");
-			js.AddFile("~/assets/js/vendor/jquery.validate.unobtrusive.js");
-			js.AddFile("~/assets/js/vendor/jquery.validate-hooks.js");
-			js.AddFile("~/assets/js/vendor/shortcut.js");
-
-			js.AddFile("~/assets/js/consolr.validation.js");
-			js.AddFile("~/assets/js/consolr.js");
-			bundles.Add(js);
-
-			if (!HttpContext.Current.IsDebuggingEnabled)
-			{
-				css.Transform = new CssMinify();
-				js.Transform = new JsMinify();
-			}
 		}
 	}
 }
