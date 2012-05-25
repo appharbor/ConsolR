@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Foo.Core.Persistence;
+﻿using System.Web.Mvc;
 using Foo.Core.Model;
+using Foo.Core.Persistence;
 
 namespace ConsolR.Web.Controllers
 {
-    public class UserController : Controller
-    {
+	public class UserController : Controller
+	{
 		private readonly Context _context = new Context();
 
 		public ActionResult Index()
@@ -24,5 +20,5 @@ namespace ConsolR.Web.Controllers
 
 			return RedirectToAction("Index");
 		}
-    }
+	}
 }
