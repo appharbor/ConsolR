@@ -2,10 +2,10 @@
 using ConsolR.Hosting.Web;
 using SignalR;
 
+[assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
+
 namespace ConsolR.Hosting
 {
-	[assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
-
 	public static class Bootstrapper
 	{
 		public static void PreApplicationStart()
