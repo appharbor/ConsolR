@@ -21,23 +21,6 @@ namespace Compilify
 		public Sandbox(string name, byte[] compiledAssemblyBytes)
 		{
 			_assemblyBytes = compiledAssemblyBytes;
-
-			var evidence = new Evidence();
-			evidence.AddHostEvidence(new Zone(SecurityZone.Internet));
-
-			var permissions = SecurityManager.GetStandardSandbox(evidence);
-			permissions.AddPermission(new SecurityPermission(SecurityPermissionFlag.Execution));
-			permissions.AddPermission(new ReflectionPermission(ReflectionPermissionFlag.RestrictedMemberAccess));
-
-			var setup = new AppDomainSetup
-			{
-				ApplicationBase = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-				ApplicationName = name,
-				DisallowBindingRedirects = true,
-				DisallowCodeDownload = true,
-				DisallowPublisherPolicy = true
-			};
-
 			_domain = AppDomain.CurrentDomain;
 		}
 
@@ -73,14 +56,6 @@ namespace Compilify
 				ProcessorTime = _domain.MonitoringTotalProcessorTime,
 				TotalMemoryAllocated = _domain.MonitoringTotalAllocatedMemorySize,
 			};
-		}
-
-		public void Dispose()
-		{
-			if (!_disposed)
-			{
-				_disposed = true;
-			}
 		}
 
 		private sealed class ByteCodeLoader : MarshalByRefObject
