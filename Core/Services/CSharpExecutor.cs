@@ -16,9 +16,9 @@ namespace Compilify.Services
 
 		private readonly ICSharpCompilationProvider compiler;
 
-		public ExecutionResult Execute(SourceCode post)
+		public ExecutionResult Execute(SourceCode sourceCode)
 		{
-			var compilation = compiler.Compile(post);
+			var compilation = compiler.Compile(sourceCode);
 
 			byte[] compiledAssembly;
 			using (var stream = new MemoryStream())
@@ -33,7 +33,7 @@ namespace Compilify.Services
 				compiledAssembly = stream.ToArray();
 			}
 
-			using (var sandbox = new Sandbox("Sandbox", compiledAssembly))
+			using (var sandbox = new Sandbox(compiledAssembly))
 			{
 				return sandbox.Run("EntryPoint", "Result", TimeSpan.FromSeconds(5));
 			}

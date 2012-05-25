@@ -2,7 +2,7 @@
 {
 	public class SourceCode
 	{
-		public string Content { get; set; }
 		public string Classes { get; set; }
+		public string Content { get; set; }
 	}
 }

@@ -1,24 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Serialization;
-using System.Security;
-using System.Security.Permissions;
-using System.Security.Policy;
 using System.Threading.Tasks;
 using Compilify.Models;
-using Compilify.Services;
 using Roslyn.Scripting.CSharp;
 
 namespace Compilify
 {
-	public sealed class Sandbox : IDisposable
+	public sealed class Sandbox
 	{
 		private readonly byte[] _assemblyBytes;
 		private bool _disposed;
 		private readonly AppDomain _domain;
 
-		public Sandbox(string name, byte[] compiledAssemblyBytes)
+		public Sandbox(byte[] compiledAssemblyBytes)
 		{
 			_assemblyBytes = compiledAssemblyBytes;
 			_domain = AppDomain.CurrentDomain;
