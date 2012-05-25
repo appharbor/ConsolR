@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +74,7 @@
     <Compile Include="Services\CSharpValidator.cs" />
     <Compile Include="Services\ICSharpCompilationProvider.cs" />
     <Compile Include="Services\MissingSemicolonRewriter.cs" />
+    <Compile Include="Web\BasicAuthentication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
