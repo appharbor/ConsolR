@@ -11,12 +11,10 @@ namespace ConsolR.Core
 	public sealed class Sandbox
 	{
 		private readonly byte[] _assemblyBytes;
-		private readonly AppDomain _domain;
 
 		public Sandbox(byte[] compiledAssemblyBytes)
 		{
 			_assemblyBytes = compiledAssemblyBytes;
-			_domain = AppDomain.CurrentDomain;
 		}
 
 		static Sandbox()
@@ -41,16 +39,17 @@ namespace ConsolR.Core
 			var result = new ExecutionResult();
 			var type = typeof(ByteCodeLoader);
 			var formatter = new ObjectFormatter(maxLineLength: 5120);
+			var domain = AppDomain.CurrentDomain;
 
 			try
 			{
-				var loader = (ByteCodeLoader)_domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
+				var loader = (ByteCodeLoader)domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
 				var unformattedResult = loader.Run(className, resultProperty, _assemblyBytes);
 
 				result.Result = formatter.FormatObject(unformattedResult.ReturnValue);
 				result.ConsoleOutput = unformattedResult.ConsoleOutput;
-				result.ProcessorTime = _domain.MonitoringTotalProcessorTime;
-				result.TotalMemoryAllocated = _domain.MonitoringTotalAllocatedMemorySize;
+				result.ProcessorTime = domain.MonitoringTotalProcessorTime;
+				result.TotalMemoryAllocated = domain.MonitoringTotalAllocatedMemorySize;
 			}
 			catch (SerializationException ex)
 			{
