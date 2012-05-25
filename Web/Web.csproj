@@ -41,42 +41,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.5\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Compilers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Compilers.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Compilers.VisualBasic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.VisualBasic.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Services.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Services.VisualBasic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.VisualBasic.dll</HintPath>
-    </Reference>
-    <Reference Include="SignalR">
-      <HintPath>..\packages\SignalR.Server.0.5.0\lib\net40\SignalR.dll</HintPath>
-    </Reference>
-    <Reference Include="SignalR.Hosting.AspNet">
-      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.0\lib\net40\SignalR.Hosting.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="SignalR.Hosting.Common">
-      <HintPath>..\packages\SignalR.Hosting.Common.0.5.0\lib\net40\SignalR.Hosting.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -123,9 +87,6 @@
       <Private>True</Private>
       <HintPath>..\packages\AspNetMvc.4.0.20126.16343\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Providers">
-      <HintPath>..\packages\System.Web.Providers.Core.1.0\lib\net40\System.Web.Providers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\AspNetRazor.Core.2.0.20126.16343\lib\net40\System.Web.Razor.dll</HintPath>
@@ -151,9 +112,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebActivator">
-      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
