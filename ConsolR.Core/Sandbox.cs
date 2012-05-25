@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using ConsolR.Core.Models;
 using Roslyn.Scripting.CSharp;
@@ -37,19 +38,30 @@ namespace ConsolR.Core
 
 		private ExecutionResult Execute(string className, string resultProperty)
 		{
+			var result = new ExecutionResult();
 			var type = typeof(ByteCodeLoader);
-
-			var loader = (ByteCodeLoader)_domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
-			var unformattedResult = loader.Run(className, resultProperty, _assemblyBytes);
-
 			var formatter = new ObjectFormatter(maxLineLength: 5120);
-			return new ExecutionResult
+
+			try
 			{
-				Result = formatter.FormatObject(unformattedResult.ReturnValue),
-				ConsoleOutput = unformattedResult.ConsoleOutput,
-				ProcessorTime = _domain.MonitoringTotalProcessorTime,
-				TotalMemoryAllocated = _domain.MonitoringTotalAllocatedMemorySize,
-			};
+				var loader = (ByteCodeLoader)_domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
+				var unformattedResult = loader.Run(className, resultProperty, _assemblyBytes);
+
+				result.Result = formatter.FormatObject(unformattedResult.ReturnValue);
+				result.ConsoleOutput = unformattedResult.ConsoleOutput;
+				result.ProcessorTime = _domain.MonitoringTotalProcessorTime;
+				result.TotalMemoryAllocated = _domain.MonitoringTotalAllocatedMemorySize;
+			}
+			catch (SerializationException ex)
+			{
+				result.Result = ex.Message;
+			}
+			catch (TargetInvocationException ex)
+			{
+				result.Result = ex.InnerException.ToString();
+			}
+
+			return result;
 		}
 
 		private sealed class ByteCodeLoader : MarshalByRefObject
