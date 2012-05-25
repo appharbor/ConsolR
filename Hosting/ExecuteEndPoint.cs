@@ -41,7 +41,7 @@ namespace ConsolR.Hosting
 			return Connection.Send(connectionId, new
 			{
 				status = "ok",
-				data = result.Result,
+				data = HttpUtility.HtmlEncode(result.Result),
 			});
 		}
 	}
