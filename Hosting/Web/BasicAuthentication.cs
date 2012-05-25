@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Specialized;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Web;
-using System.Net;
-using System.Collections.Specialized;
-using System.Security.Cryptography;
 
-namespace ConsolR.Core.Web
+namespace ConsolR.Hosting
 {
 	public class BasicAuthenticator
 	{

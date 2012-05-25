@@ -212,6 +212,10 @@
       <Project>{8F2EA92A-1519-482E-9808-DACB2CA67503}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Hosting\Hosting.csproj">
+      <Project>{ECD161DB-0E1C-4860-8AAA-3FC8E5C36FC0}</Project>
+      <Name>Hosting</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConsolRHandler.ashx" />
