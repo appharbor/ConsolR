@@ -168,7 +168,6 @@
     <Compile Include="Infrastructure\Extensions\RouteCollectionExtensions.cs" />
     <Compile Include="Infrastructure\LowercaseRoute.cs" />
     <Compile Include="Infrastructure\RequireHttpsAttribute.cs" />
-    <Compile Include="Infrastructure\TaskAsyncHelper.cs" />
     <Compile Include="Models\ValidateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
