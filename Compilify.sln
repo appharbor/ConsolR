@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{02EF70
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{8F2EA92A-1519-482E-9808-DACB2CA67503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolR.Core", "Core\ConsolR.Core.csproj", "{8F2EA92A-1519-482E-9808-DACB2CA67503}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foo.Core", "Foo.Core\Foo.Core.csproj", "{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}"
 EndProject

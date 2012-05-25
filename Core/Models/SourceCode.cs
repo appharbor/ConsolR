@@ -1,4 +1,4 @@
-﻿namespace ConsolR.Models
+﻿namespace ConsolR.Core.Models
 {
 	public class SourceCode
 	{

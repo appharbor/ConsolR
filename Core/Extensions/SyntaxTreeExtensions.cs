@@ -1,6 +1,6 @@
 using Roslyn.Compilers.CSharp;
 
-namespace ConsolR.Extensions
+namespace ConsolR.Core.Extensions
 {
 	internal static class SyntaxTreeExtensions
 	{

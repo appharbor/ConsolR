@@ -2,10 +2,10 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using ConsolR.Models;
+using ConsolR.Core.Models;
 using Roslyn.Scripting.CSharp;
 
-namespace ConsolR
+namespace ConsolR.Core
 {
 	public sealed class Sandbox
 	{

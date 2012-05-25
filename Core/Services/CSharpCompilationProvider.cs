@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsolR.Extensions;
-using ConsolR.Models;
+using ConsolR.Core.Extensions;
+using ConsolR.Core.Models;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 
-namespace ConsolR.Services
+namespace ConsolR.Core.Services
 {
 	public class CSharpCompilationProvider : ICSharpCompilationProvider
 	{

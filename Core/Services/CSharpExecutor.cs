@@ -1,8 +1,8 @@
 using System;
 using System.IO;
-using ConsolR.Models;
+using ConsolR.Core.Models;
 
-namespace ConsolR.Services
+namespace ConsolR.Core.Services
 {
 	public class CSharpExecutor
 	{

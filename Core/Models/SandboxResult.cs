@@ -1,6 +1,6 @@
 using System;
 
-namespace ConsolR.Models
+namespace ConsolR.Core.Models
 {
 	public class SandboxResult
 	{

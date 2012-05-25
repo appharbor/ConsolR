@@ -231,9 +231,9 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\Core\ConsolR.Core.csproj">
       <Project>{8F2EA92A-1519-482E-9808-DACB2CA67503}</Project>
-      <Name>Core</Name>
+      <Name>ConsolR.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Foo.Core\Foo.Core.csproj">
       <Project>{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}</Project>

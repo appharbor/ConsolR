@@ -1,7 +1,7 @@
-﻿using ConsolR.Models;
+﻿using ConsolR.Core.Models;
 using Roslyn.Compilers.CSharp;
 
-namespace ConsolR.Services
+namespace ConsolR.Core.Services
 {
 	public interface ICSharpCompilationProvider
 	{
