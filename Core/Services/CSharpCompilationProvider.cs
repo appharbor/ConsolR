@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Compilify.Extensions;
-using Compilify.Models;
+using ConsolR.Extensions;
+using ConsolR.Models;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 
-namespace Compilify.Services
+namespace ConsolR.Services
 {
 	public class CSharpCompilationProvider : ICSharpCompilationProvider
 	{

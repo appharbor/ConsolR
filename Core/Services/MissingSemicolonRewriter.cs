@@ -1,6 +1,6 @@
 ﻿using Roslyn.Compilers.CSharp;
 
-namespace Compilify.Services
+namespace ConsolR.Services
 {
     internal sealed class MissingSemicolonRewriter : SyntaxRewriter
     {

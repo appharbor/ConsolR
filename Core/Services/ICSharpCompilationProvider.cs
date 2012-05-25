@@ -1,7 +1,7 @@
-﻿using Compilify.Models;
+﻿using ConsolR.Models;
 using Roslyn.Compilers.CSharp;
 
-namespace Compilify.Services
+namespace ConsolR.Services
 {
 	public interface ICSharpCompilationProvider
 	{

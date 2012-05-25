@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foo.Core", "Foo.Core\Foo.Core.csproj", "{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeConsole.Web", "CodeConsole.Web\CodeConsole.Web.csproj", "{0C5B8D9B-22A2-4F31-A939-A421D2AF2012}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolR.Web", "CodeConsole.Web\ConsolR.Web.csproj", "{0C5B8D9B-22A2-4F31-A939-A421D2AF2012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿namespace Compilify.Models
+﻿namespace ConsolR.Models
 {
 	public class SourceCode
 	{

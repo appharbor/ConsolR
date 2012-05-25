@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace Compilify.Web.Infrastructure
+namespace ConsolR.Web.Infrastructure
 {
     /// <summary>
     /// Redirects HTTP requests to HTTPS.</summary>

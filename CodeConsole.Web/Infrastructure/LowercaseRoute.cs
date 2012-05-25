@@ -1,6 +1,6 @@
 ﻿using System.Web.Routing;
 
-namespace Compilify.Web.Infrastructure
+namespace ConsolR.Web.Infrastructure
 {
     public class LowercaseRoute : Route
     {

@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Compilify.Models;
-using Compilify.Services;
-using Compilify.Web.Models;
+using ConsolR.Models;
+using ConsolR.Services;
+using ConsolR.Web.Models;
 using Roslyn.Compilers;
 
-namespace Compilify.Web.Controllers
+namespace ConsolR.Web.Controllers
 {
 	public class ConsoleController : AsyncController
 	{

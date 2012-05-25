@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Compilify.Models
+namespace ConsolR.Models
 {
 	public class ExecutionResult
 	{

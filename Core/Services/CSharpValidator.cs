@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Compilify.Models;
+using ConsolR.Models;
 using Roslyn.Compilers.Common;
 
-namespace Compilify.Services
+namespace ConsolR.Services
 {
 	public class CSharpValidator
 	{

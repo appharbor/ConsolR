@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Roslyn.Compilers;
 
-namespace Compilify.Web.Models
+namespace ConsolR.Web.Models
 {
 	public class ValidateViewModel
 	{

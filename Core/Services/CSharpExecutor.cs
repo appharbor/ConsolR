@@ -1,8 +1,8 @@
 using System;
 using System.IO;
-using Compilify.Models;
+using ConsolR.Models;
 
-namespace Compilify.Services
+namespace ConsolR.Services
 {
 	public class CSharpExecutor
 	{

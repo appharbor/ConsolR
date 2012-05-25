@@ -2,10 +2,10 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Compilify.Web.EndPoints;
-using Compilify.Web.Infrastructure.Extensions;
+using ConsolR.Web.EndPoints;
+using ConsolR.Web.Infrastructure.Extensions;
 using SignalR;
-using RequireHttpsAttribute = Compilify.Web.Infrastructure.RequireHttpsAttribute;
+using RequireHttpsAttribute = ConsolR.Web.Infrastructure.RequireHttpsAttribute;
 
 namespace CodeConsole.Web
 {

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Foo.Core.Persistence;
 using Foo.Core.Model;
 
-namespace Compilify.Web.Controllers
+namespace ConsolR.Web.Controllers
 {
     public class UserController : Controller
     {

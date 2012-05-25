@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
-using Compilify.Models;
-using Compilify.Services;
+using ConsolR.Models;
+using ConsolR.Services;
 using Newtonsoft.Json;
 using SignalR;
 using SignalR.Hosting;
 
-namespace Compilify.Web.EndPoints
+namespace ConsolR.Web.EndPoints
 {
 	public class ExecuteEndPoint : PersistentConnection
 	{
