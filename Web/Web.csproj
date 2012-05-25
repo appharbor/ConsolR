@@ -159,9 +159,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ConsolRHandler.ashx.cs">
-      <DependentUpon>ConsolRHandler.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -216,9 +213,6 @@
       <Project>{ECD161DB-0E1C-4860-8AAA-3FC8E5C36FC0}</Project>
       <Name>Hosting</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ConsolRHandler.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

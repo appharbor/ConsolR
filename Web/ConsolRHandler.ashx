@@ -1,1 +1,0 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="ConsolRHandler.ashx.cs" Class="ConsolR.Web.ConsolRHandler" %>

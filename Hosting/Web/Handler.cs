@@ -18,21 +18,10 @@ using Roslyn.Compilers;
 using SignalR;
 using SignalR.Hosting;
 
-[assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Web.Bootstrapper), "PreApplicationStart")]
+[assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
 
-namespace ConsolR.Web
+namespace ConsolR.Hosting
 {
-	public static class Bootstrapper
-	{
-		public static void PreApplicationStart()
-		{
-			var routes = RouteTable.Routes;
-			routes.MapHttpHandler<ConsolRHandler>("consolr/validate");
-			routes.MapHttpHandler<ConsolRHandler>("consolr");
-			routes.MapConnection<ExecuteEndPoint>("consolr-execute", "consolr/execute/{*operation}");
-		}
-	}
-
 	public class ConsolRHandler : IHttpHandler
 	{
 		public void ProcessRequest(HttpContext context)
@@ -64,7 +53,7 @@ namespace ConsolR.Web
 			using (var reader = new StreamReader(context.Request.InputStream))
 			{
 				var foo = reader.ReadToEnd();
-				sourceCode =  serializer.Deserialize<SourceCode>(foo);
+				sourceCode = serializer.Deserialize<SourceCode>(foo);
 			}
 
 			var errors = compiler.GetCompilationErrors(sourceCode)
