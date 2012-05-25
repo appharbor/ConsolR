@@ -76,7 +76,7 @@ namespace CodeConsole.Web
 			css.AddFile("~/assets/css/vendor/font-awesome.css");
 			css.AddFile("~/assets/css/vendor/codemirror-2.23.css");
 			css.AddFile("~/assets/css/vendor/codemirror-neat-2.23.css");
-			css.AddFile("~/assets/css/compilify.css");
+			css.AddFile("~/assets/css/consolr.css");
 			bundles.Add(css);
 
 			var js = new Bundle("~/js");
@@ -92,8 +92,8 @@ namespace CodeConsole.Web
 			js.AddFile("~/assets/js/vendor/jquery.validate-hooks.js");
 			js.AddFile("~/assets/js/vendor/shortcut.js");
 
-			js.AddFile("~/assets/js/compilify.validation.js");
-			js.AddFile("~/assets/js/compilify.js");
+			js.AddFile("~/assets/js/consolr.validation.js");
+			js.AddFile("~/assets/js/consolr.js");
 			bundles.Add(js);
 
 			if (!HttpContext.Current.IsDebuggingEnabled)

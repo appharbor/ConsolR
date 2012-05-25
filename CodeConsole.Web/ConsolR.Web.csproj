@@ -172,7 +172,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\css\compilify.css" />
+    <Content Include="Assets\css\consolr.css" />
     <Content Include="Assets\css\vendor\bootstrap-2.0.2.css" />
     <Content Include="Assets\css\vendor\codemirror-2.23.css" />
     <Content Include="Assets\css\vendor\codemirror-neat-2.23.css" />
@@ -185,8 +185,8 @@
     <Content Include="Assets\img\observe.png" />
     <Content Include="Assets\img\octocat.png" />
     <Content Include="Assets\img\twitter.png" />
-    <Content Include="Assets\js\compilify.js" />
-    <Content Include="Assets\js\Compilify.Validation.js" />
+    <Content Include="Assets\js\consolr.js" />
+    <Content Include="Assets\js\consolr.validation.js" />
     <Content Include="Assets\js\vendor\backbone-0.9.2.js" />
     <Content Include="Assets\js\vendor\bootstrap-2.0.2.js" />
     <Content Include="Assets\js\vendor\codemirror-2.23.js" />

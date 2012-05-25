@@ -5,7 +5,7 @@
     };
 }
 
-(function($, _, Compilify) {
+(function($, _, ConsolR) {
     var root = this,
         connection,
     
@@ -118,7 +118,7 @@
                             var markStart = { line: start.Line, ch: start.Character };
                             var markEnd = { line: end.Line, ch: end.Character };
 
-                            var mark = Compilify[file].markText(markStart, markEnd, 'compilation-error');
+                            var mark = ConsolR[file].markText(markStart, markEnd, 'compilation-error');
 
                             markedErrors.push(mark);
 
@@ -176,8 +176,8 @@
             prompt = $('#execute .editor textarea')[0];
 
         var validateEnvironment = _.throttle(function() {
-            var classes = Compilify.Editor.getValue();
-            var command = Compilify.Prompt.getValue();
+            var classes = ConsolR.Editor.getValue();
+            var command = ConsolR.Prompt.getValue();
 
             validate(command, classes);
         }, 250);
@@ -198,17 +198,17 @@
             return;
         }
         
-        Compilify.Editor = root.CodeMirror.fromTextArea(editor, editorOptions);
-        Compilify.Editor.save = save;
+        ConsolR.Editor = root.CodeMirror.fromTextArea(editor, editorOptions);
+        ConsolR.Editor.save = save;
 
-        Compilify.Prompt = root.CodeMirror.fromTextArea(prompt, editorOptions);
-        Compilify.Prompt.save = save;
+        ConsolR.Prompt = root.CodeMirror.fromTextArea(prompt, editorOptions);
+        ConsolR.Prompt.save = save;
         
         $('.js-save').on('click', save);
 
         $('.js-run').on('click', function() {
-            var command = Compilify.Prompt.getValue();
-            var classes = Compilify.Editor.getValue();
+            var command = ConsolR.Prompt.getValue();
+            var classes = ConsolR.Editor.getValue();
             
             execute(command, classes);
 
@@ -228,4 +228,4 @@
         shortcut.add("Ctrl+S", save);
 
     });
-}).call(window, window.jQuery, window._, window.Compilify || {});
+}).call(window, window.jQuery, window._, window.ConsolR || {});

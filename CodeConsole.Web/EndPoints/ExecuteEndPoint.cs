@@ -16,7 +16,7 @@ namespace ConsolR.Web.EndPoints
 
 		static ExecuteEndPoint()
 		{
-			var timeout = int.Parse(ConfigurationManager.AppSettings["Compilify.ExecutionTimeout"]);
+			var timeout = int.Parse(ConfigurationManager.AppSettings["ConsolR.ExecutionTimeout"]);
 			ExecutionTimeout = TimeSpan.FromSeconds(timeout);
 		}
 
