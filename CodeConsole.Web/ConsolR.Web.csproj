@@ -165,6 +165,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ConsolR.ashx.cs">
+      <DependentUpon>ConsolR.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\Extensions\RouteCollectionExtensions.cs" />
     <Compile Include="Infrastructure\LowercaseRoute.cs" />
     <Compile Include="Infrastructure\RequireHttpsAttribute.cs" />
@@ -242,6 +245,9 @@
       <Project>{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}</Project>
       <Name>Foo.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConsolR.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
