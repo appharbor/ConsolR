@@ -8,8 +8,8 @@
     <ProjectGuid>{8F2EA92A-1519-482E-9808-DACB2CA67503}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsolR</RootNamespace>
-    <AssemblyName>Compilify.Core</AssemblyName>
+    <RootNamespace>ConsolR.Core</RootNamespace>
+    <AssemblyName>ConsolR.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
