@@ -17,18 +17,23 @@ using Roslyn.Compilers;
 using SignalR;
 using SignalR.Hosting;
 
+[assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Web.Bootstrapper), "PreApplicationStart")]
+
 namespace ConsolR.Web
 {
-	public class ConsolRHandler : IHttpHandler
+	public static class Bootstrapper
 	{
-		static ConsolRHandler()
+		public static void PreApplicationStart()
 		{
 			var routes = RouteTable.Routes;
-
 			routes.MapHttpHandler<ConsolRHandler>("consolr/validate");
+			routes.MapHttpHandler<ConsolRHandler>("consolr");
 			routes.MapConnection<ExecuteEndPoint>("consolr-execute", "consolr/execute/{*operation}");
 		}
+	}
 
+	public class ConsolRHandler : IHttpHandler
+	{
 		public void ProcessRequest(HttpContext context)
 		{
 			var contextWrapper = new HttpContextWrapper(context);
@@ -36,7 +41,7 @@ namespace ConsolR.Web
 
 			switch (context.Request.Path.ToLower())
 			{
-				case "/consolrhandler.ashx":
+				case "/consolr":
 					context.Response.ContentType = "text/html";
 					context.Response.WriteFile("~/assets/consolr/index.html");
 					break;
