@@ -163,6 +163,10 @@
     <Compile Include="ConsolRHandler.ashx.cs">
       <DependentUpon>ConsolRHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Persistence\Configuration.cs" />
+    <Compile Include="Persistence\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -231,10 +235,6 @@
     <ProjectReference Include="..\ConsolR.Core\ConsolR.Core.csproj">
       <Project>{8F2EA92A-1519-482E-9808-DACB2CA67503}</Project>
       <Name>ConsolR.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Foo.Core\Foo.Core.csproj">
-      <Project>{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}</Project>
-      <Name>Foo.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

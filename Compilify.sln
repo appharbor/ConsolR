@@ -8,8 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{02EF70
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foo.Core", "Foo.Core\Foo.Core.csproj", "{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolR.Web", "ConsolR.Web\ConsolR.Web.csproj", "{0C5B8D9B-22A2-4F31-A939-A421D2AF2012}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolR.Core", "ConsolR.Core\ConsolR.Core.csproj", "{8F2EA92A-1519-482E-9808-DACB2CA67503}"
@@ -24,16 +22,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{BBD1DE2E-9F1E-45AA-8E9A-24601F31D13D}.Release|x86.ActiveCfg = Release|Any CPU
 		{0C5B8D9B-22A2-4F31-A939-A421D2AF2012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C5B8D9B-22A2-4F31-A939-A421D2AF2012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C5B8D9B-22A2-4F31-A939-A421D2AF2012}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
