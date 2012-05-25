@@ -35,7 +35,6 @@ namespace ConsolR.Web
 					context.Response.WriteFile("~/assets/consolr/index.html");
 					break;
 				case "/consolr/validate":
-					;
 					context.Response.ContentType = "application/json";
 					context.Response.Write(GetValidationResult(context));
 					break;
