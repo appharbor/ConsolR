@@ -4,14 +4,15 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Configuration;
 
 namespace ConsolR.Hosting
 {
 	public class BasicAuthenticator
 	{
 		private const string AuthCookieName = "consolr-auth";
-		private const string Username = "foo";
-		private const string Password = "baz";
+		private readonly static string Username = ConfigurationManager.AppSettings.Get("consolr.username");
+		private readonly static string Password = ConfigurationManager.AppSettings.Get("consolr.password");
 
 		public static bool Authenticate(HttpContextBase context)
 		{
