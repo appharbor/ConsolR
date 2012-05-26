@@ -1,7 +1,7 @@
 ﻿using System.Web.Routing;
 using SignalR;
 
-[assembly: WebActivator.PostApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
 
 namespace ConsolR.Hosting
 {
