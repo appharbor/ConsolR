@@ -1,0 +1,7 @@
+﻿<configuration>
+	<appSettings>
+		<add key="consolr.executionTimeout" value="30" />
+		<add key="consolr.username" value="foo" />
+		<add key="consolr.password" value="bar" />
+	</appSettings>
+</configuration>
