@@ -99,7 +99,6 @@
     <Compile Include="BasicAuthentication.cs" />
     <Compile Include="BootStrapper.cs" />
     <Compile Include="ExecuteEndPoint.cs" />
-    <Compile Include="Handler.cs" />
     <Compile Include="HttpHandlerExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
