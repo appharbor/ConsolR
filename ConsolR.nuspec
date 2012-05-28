@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <version>0.3.0.0</version>
+    <version>0.1.0.0</version>
     <authors>AppHarbor</authors>
     <owners>AppHarbor</owners>
     <licenseUrl>https://github.com/appharbor/ConsolR/blob/master/LICENSE.md</licenseUrl>
