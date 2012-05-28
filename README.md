@@ -21,6 +21,12 @@ Future versions may allow for the execution of code inside a
 
 ConsolR is based on the excellent [Compilify project](https://github.com/Compilify/Compilify) by Justin Rusbatch.
 
+## Installing with NuGet
+
+Open your package manager console and install the package:
+
+    Install-Package ConsolR
+
 ## Running ConsolR in a website
 
 Simply install the ConsolR NuGet package in your .NET 4.0 web application and access the ConsolR interface on "http://example.com/consolr".
