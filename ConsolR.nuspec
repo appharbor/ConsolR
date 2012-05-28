@@ -4,6 +4,7 @@
     <version>0.3.0.0</version>
     <authors>AppHarbor</authors>
     <owners>AppHarbor</owners>
+    <licenseUrl>https://github.com/appharbor/ConsolR/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>http://github.com/appharbor/consolr</projectUrl>
     <dependencies>
       <dependency id="Nancy" version="0.11.0" />
