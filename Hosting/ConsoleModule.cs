@@ -1,13 +1,11 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Text;
-using System.Web;
 using ConsolR.Core.Models;
 using ConsolR.Core.Services;
 using Nancy;
 using Nancy.Json;
 using Roslyn.Compilers;
-
 
 namespace ConsolR.Hosting
 {
@@ -16,15 +14,6 @@ namespace ConsolR.Hosting
 		public ConsoleModule()
 			: base("consolr")
 		{
-			Before.AddItemToStartOfPipeline(x =>
-			{
-				if (!BasicAuthenticator.Authenticate(new HttpContextWrapper(HttpContext.Current)))
-				{
-					x.Response = new Response();
-				}
-				return x.Response;
-			});
-
 			Get["/"] = parameters =>
 			{
 				return View["assets/consolr/index.html"];

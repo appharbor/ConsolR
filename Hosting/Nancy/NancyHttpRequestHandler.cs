@@ -31,8 +31,11 @@ namespace ConsolR.Hosting.Nancy
 		public void ProcessRequest(HttpContext context)
 		{
 			var wrappedContext = new HttpContextWrapper(context);
-			var handler = new NancyHandler(engine);
-			handler.ProcessRequest(wrappedContext);
+			if (BasicAuthenticator.Authenticate(wrappedContext))
+			{
+				var handler = new NancyHandler(engine);
+				handler.ProcessRequest(wrappedContext);
+			}
 		}
 
 		private class NancyHandler
