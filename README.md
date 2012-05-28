@@ -47,3 +47,6 @@ When the ConsolR nuget package is installed three application settings will be a
 * `consolr.password`: The password used for accessing ConsolR.
 
 Make sure to change these username and password before deploying the application to production servers.
+
+##License
+[MIT License](http://github.com/appharbor/consolr/license.md)
