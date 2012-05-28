@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Configuration;
+using System.Web;
 using System.Web.Routing;
 using ConsolR.Hosting.Nancy;
 using SignalR;
@@ -14,8 +15,14 @@ namespace ConsolR.Hosting
 		{
 			var routes = RouteTable.Routes;
 
-			routes.MapConnection<ExecuteEndPoint>("consolr-execute", "consolr/execute/{*operation}");
-			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr", "consolr/{*path}", null, new IncomingOnlyRouteConstraint());
+			routes.MapConnection<ExecuteEndPoint>("consolr-execute", GetPath("execute/{*operation}"));
+			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr", GetPath("{*path}"), null, new IncomingOnlyRouteConstraint());
+		}
+
+		private static string GetPath(string relativePath)
+		{
+			var rootPath = string.Format("{0}/", ConfigurationManager.AppSettings["consolr.rootPath"]);
+			return string.Concat(rootPath, relativePath);
 		}
 	}
 }

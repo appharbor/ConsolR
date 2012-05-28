@@ -42,9 +42,10 @@ The NuGet package will add all dependencies along with required assets and confi
 
 When the ConsolR nuget package is installed three application settings will be added to your web.config in the `<appSettings>` section:
 
-* `consolr.executiontimeout`: The maximum amount of time (in seconds) before the connection and code execution will time out.
-* `consolr.username`: The username used for accessing ConsolR.
-* `consolr.password`: The password used for accessing ConsolR.
+* `consolr.executiontimeout`: The maximum amount of time (in seconds) before the connection and code execution will time out (default: 30).
+* `consolr.rootPath`: The root path under which ConsolR will be accessible (default: "consolr")
+* `consolr.username`: The username used for accessing ConsolR (default: "foo").
+* `consolr.password`: The password used for accessing ConsolR (default: "bar").
 
 Make sure to change these username and password before deploying the application to production servers.
 
