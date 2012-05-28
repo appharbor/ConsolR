@@ -21,7 +21,7 @@ namespace ConsolR.Hosting.Nancy
 
 		static NancyHttpRequestHandler()
 		{
-			var bootstrapper = NancyBootstrapperLocator.Bootstrapper;
+			var bootstrapper = new DefaultNancyBootstrapper();
 
 			bootstrapper.Initialise();
 
