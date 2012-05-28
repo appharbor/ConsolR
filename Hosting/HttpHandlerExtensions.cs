@@ -16,7 +16,8 @@ namespace ConsolR.Hosting
 		{
 			var route = new Route(url, new HttpHandlerRouteHandler<THandler>());
 			route.Defaults = new RouteValueDictionary(defaults);
-			route.Constraints = new RouteValueDictionary(constraints);
+			route.Constraints = new RouteValueDictionary();
+			route.Constraints.Add(name, constraints);
 			routes.Add(name, route);
 		}
 
