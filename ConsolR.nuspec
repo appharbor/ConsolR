@@ -14,7 +14,7 @@
     <id>ConsolR</id>
     <title>ConsolR</title>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>ConsolR enables you to execute C# code againt a running .NET web application</description>
+    <description>ConsolR enables you to execute C# code against a running .NET web application</description>
     <copyright>Copyright ©  AppHarbor 2012</copyright>
   </metadata>
   <files>
