@@ -13,7 +13,8 @@ namespace ConsolR.Hosting
 			var routes = RouteTable.Routes;
 
 			routes.MapConnection<ExecuteEndPoint>("consolr-execute", "consolr/execute/{*operation}");
-			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr/{*path}");
+			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr");
+			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr/validate");
 		}
 	}
 }
