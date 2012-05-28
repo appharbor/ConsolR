@@ -1,5 +1,5 @@
 ﻿using System.Web.Routing;
-using Nancy.Hosting.Aspnet;
+using ConsolR.Hosting.Nancy;
 using SignalR;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]

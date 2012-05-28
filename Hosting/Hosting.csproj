@@ -40,9 +40,6 @@
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.11.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Hosting.Aspnet">
-      <HintPath>..\packages\Nancy.Hosting.Aspnet.0.11.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -95,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleModule.cs" />
+    <Compile Include="Nancy\AspNetRootSourceProvider.cs" />
+    <Compile Include="Nancy\NancyHttpRequestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasicAuthentication.cs" />
     <Compile Include="BootStrapper.cs" />
