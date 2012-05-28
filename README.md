@@ -16,9 +16,6 @@ Always remember that you're running the code inside of your application's appdom
 This means that you can access and modify the application's state and run any code you want, 
 which could render the application useless or harmful.
 
-Future versions may allow for the execution of code inside a 
-"cloned" application domain that reduce the risks associated with 
-
 ConsolR is based on the excellent [Compilify project](https://github.com/Compilify/Compilify) by Justin Rusbatch.
 
 ## Installing with NuGet
@@ -48,6 +45,11 @@ When the ConsolR nuget package is installed three application settings will be a
 * `consolr.password`: The password used for accessing ConsolR (default: "bar").
 
 Make sure to change these username and password before deploying the application to production servers.
+
+### AppHarbor
+
+If you're running your ConsolR-enabled application on AppHarbor you can configure these setting with "Configuration Variables". This way you can avoid including
+sensitive information in your configuration files, which in turn might be tracked in a version control system.
 
 ##License
 [MIT License](https://github.com/appharbor/ConsolR/blob/master/LICENSE.md)
