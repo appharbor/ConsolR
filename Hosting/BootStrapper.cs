@@ -4,7 +4,7 @@ using ConsolR.Hosting.Nancy;
 using SignalR;
 using SignalR.Hosting.AspNet.Routing;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
+[assembly: PreApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
 
 namespace ConsolR.Hosting
 {

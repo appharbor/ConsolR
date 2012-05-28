@@ -9,7 +9,6 @@
       <dependency id="Nancy" version="0.11.0" />
       <dependency id="Roslyn" version="1.0.11014.5" />
       <dependency id="SignalR" version="0.5.0" />
-      <dependency id="WebActivator" version="1.5" />
     </dependencies>
     <id>ConsolR</id>
     <title>ConsolR</title>
@@ -47,7 +46,7 @@
     <file src="Web\Assets\consolr\js\consolr.validation.js" target="content\Assets\consolr\js\consolr.validation.js" />
     <file src="Web\Assets\consolr\Index.html" target="content\Assets\consolr\Index.html" />
     <file src="Web\Web.config.transform" target="content\Web.config.transform" />
-    <file src="Hosting\bin\Debug\ConsolR.Core.dll" target="lib\net40\ConsolR.Core.dll" />
-    <file src="Hosting\bin\Debug\ConsolR.Hosting.dll" target="lib\net40\ConsolR.Hosting.dll" />
+    <file src="Hosting\bin\Release\ConsolR.Core.dll" target="lib\net40\ConsolR.Core.dll" />
+    <file src="Hosting\bin\Release\ConsolR.Hosting.dll" target="lib\net40\ConsolR.Hosting.dll" />
   </files>
 </package>
