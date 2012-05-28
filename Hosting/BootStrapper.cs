@@ -16,7 +16,7 @@ namespace ConsolR.Hosting
 			var routes = RouteTable.Routes;
 
 			routes.MapConnection<ExecuteEndPoint>("consolr-execute", GetPath("execute/{*operation}"));
-			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr", GetPath("{*path}"), null, new IncomingOnlyRouteConstraint());
+			routes.MapHttpHandler<ConsoleHandler>("consolr", GetPath("{*path}"), null, new IncomingOnlyRouteConstraint());
 		}
 
 		private static string GetPath(string relativePath)
