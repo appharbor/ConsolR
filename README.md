@@ -50,4 +50,4 @@ When the ConsolR nuget package is installed three application settings will be a
 Make sure to change these username and password before deploying the application to production servers.
 
 ##License
-[MIT License](http://github.com/appharbor/consolr/license.md)
+[MIT License](http://github.com/appharbor/ConsolR/LICENSE.md)
