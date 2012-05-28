@@ -8,7 +8,7 @@
     <dependencies>
       <dependency id="Nancy" version="0.11.0" />
       <dependency id="Roslyn" version="1.0.11014.5" />
-      <dependency id="SignalR" version="0.5.0" />
+      <dependency id="SignalR.Hosting.AspNet" version="0.5.0" />
     </dependencies>
     <id>ConsolR</id>
     <title>ConsolR</title>
