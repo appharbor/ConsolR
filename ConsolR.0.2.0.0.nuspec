@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <version>0.2.0.0</version>
+    <version>0.3.0.0</version>
     <authors>AppHarbor</authors>
     <owners>AppHarbor</owners>
     <projectUrl>http://github.com/appharbor/consolr</projectUrl>
     <dependencies>
-      <dependency id="Nancy.Hosting.Aspnet" version="0.11.0" />
+      <dependency id="Nancy" version="0.11.0" />
       <dependency id="Roslyn" version="1.0.11014.5" />
       <dependency id="SignalR" version="0.5.0" />
       <dependency id="WebActivator" version="1.5" />
@@ -48,6 +48,6 @@
     <file src="Web\Assets\consolr\Index.html" target="content\Assets\consolr\Index.html" />
     <file src="Web\Web.config.transform" target="content\Web.config.transform" />
     <file src="Hosting\bin\Debug\ConsolR.Core.dll" target="lib\net40\ConsolR.Core.dll" />
-    <file src="lib\net40\ConsolR.Hosting.dll" target="lib\net40\ConsolR.Hosting.dll" />
+    <file src="Hosting\bin\Debug\ConsolR.Hosting.dll" target="lib\net40\ConsolR.Hosting.dll" />
   </files>
 </package>
