@@ -1,6 +1,8 @@
-﻿using System.Web.Routing;
+﻿using System.Web;
+using System.Web.Routing;
 using ConsolR.Hosting.Nancy;
 using SignalR;
+using SignalR.Hosting.AspNet.Routing;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(ConsolR.Hosting.Bootstrapper), "PreApplicationStart")]
 
@@ -13,8 +15,7 @@ namespace ConsolR.Hosting
 			var routes = RouteTable.Routes;
 
 			routes.MapConnection<ExecuteEndPoint>("consolr-execute", "consolr/execute/{*operation}");
-			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr");
-			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr/validate");
+			routes.MapHttpHandler<NancyHttpRequestHandler>("consolr", "consolr/{*path}", null, new IncomingOnlyRouteConstraint());
 		}
 	}
 }
