@@ -11,7 +11,7 @@ It can be used for a number of things, but is mostly intended for debugging purp
 * Executing one-off code (sending e-mails, invalidating cache etc).
 * Access databases, logging tools etc. that are only accessible from production instances.
 
-While this tool is very powerful some caution should be excersised when using it.
+While this tool is very powerful some caution should be excersised when using it. Your use of it is at your own risk.
 Always remember that you're running the code inside of your application's appdomain.
 This means that you can access and modify the application's state and run any code you want, 
 which could render the application useless or harmful. Also make sure to always use HTTPS for transferring sensitive information.
