@@ -44,7 +44,7 @@ When the ConsolR nuget package is installed three application settings will be a
 * `consolr.username`: The username used for accessing ConsolR (default: "foo").
 * `consolr.password`: The password used for accessing ConsolR (default: "bar").
 
-Make sure to change these username and password before deploying the application to production servers.
+Make sure to change the username and password before deploying the application to production servers.
 We also recommend changing the root path so users won't be able to detect whether you're using ConsolR.
 
 ### AppHarbor
