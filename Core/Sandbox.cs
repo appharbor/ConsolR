@@ -43,13 +43,16 @@ namespace ConsolR.Core
 
 			try
 			{
+				var totalProcessorTime = domain.MonitoringTotalProcessorTime;
+				var totalAllocatedMemorySize = domain.MonitoringTotalAllocatedMemorySize;
+
 				var loader = (ByteCodeLoader)domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
 				var unformattedResult = loader.Run(className, resultProperty, _assemblyBytes);
 
 				result.Result = formatter.FormatObject(unformattedResult.ReturnValue);
 				result.ConsoleOutput = unformattedResult.ConsoleOutput;
-				result.ProcessorTime = domain.MonitoringTotalProcessorTime;
-				result.TotalMemoryAllocated = domain.MonitoringTotalAllocatedMemorySize;
+				result.ProcessorTime = domain.MonitoringTotalProcessorTime - totalProcessorTime;
+				result.TotalMemoryAllocated = domain.MonitoringTotalAllocatedMemorySize - totalAllocatedMemorySize;
 			}
 			catch (SerializationException ex)
 			{
