@@ -1,8 +1,8 @@
 # ConsolR
 
-ConsolR enables you to execute C# code againt a running .NET 4.0 web application's app domain through the browser.
-Once installed ConsolR will automatically configure itself during application start and is accessible through the 
-"/consolr" path. This enables an interactive console session against for instance your production environment.
+ConsolR enables you to execute C# code againt a running .NET 4.0 web application's app domain through a browser.
+Once installed, ConsolR will automatically configure itself during application start and is accessible through the 
+"/consolr" path. This enables an interactive console session against for instance an application's production environment.
 
 It can be used for a number of things, but is mostly intended for debugging purposes. Possible use cases include:
 
@@ -14,7 +14,7 @@ It can be used for a number of things, but is mostly intended for debugging purp
 While this tool is very powerful some caution should be excersised when using it.
 Always remember that you're running the code inside of your application's appdomain.
 This means that you can access and modify the application's state and run any code you want, 
-which could render the application useless or harmful.
+which could render the application useless or harmful. Also make sure to always use HTTPS for transferring sensitive information.
 
 ConsolR is based on the excellent [Compilify project](https://github.com/Compilify/Compilify) by Justin Rusbatch.
 
@@ -31,8 +31,8 @@ The default username and password is "foo" and "bar" (make sure to change these 
 
 The NuGet package will add all dependencies along with required assets and configuration:
 
-* Dependencies: Roslyn, Nancy, SignalR.AspNet.Hosting, ConsolR.Core, ConsolR.Hosting
-* Assets: All assets files are located in the "/assets/consolr" directory of your web application. You can modify these as you like although the "index.html" file is required.
+* Dependencies: Roslyn, SignalR.
+* Assets: All assets files are located in the "/assets/consolr" directory of the project you install ConsolR in. You can modify these as you please although the "index.html" must remain in it's current location.
 * Configuration: A number of appSettings that ConsolR relies on are added during installation.
 
 ## Configuring ConsolR
@@ -45,6 +45,7 @@ When the ConsolR nuget package is installed three application settings will be a
 * `consolr.password`: The password used for accessing ConsolR (default: "bar").
 
 Make sure to change these username and password before deploying the application to production servers.
+We also recommend changing the root path so users won't be able to detect whether you're using ConsolR.
 
 ### AppHarbor
 
