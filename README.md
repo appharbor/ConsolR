@@ -52,5 +52,13 @@ We also recommend changing the root path so users won't be able to detect whethe
 If you're running your ConsolR-enabled application on AppHarbor you can configure these setting with "Configuration Variables". This way you can avoid including
 sensitive information in your configuration files, which in turn might be tracked in a version control system.
 
+## Helpers
+
+A couple of handy helper methods are readily available in the [ConsolR.Hosting.Helper class](https://github.com/appharbor/ConsolR/blob/master/Hosting/Helper.cs).
+Currently you can call `ReadFile(string filename)` and `Log(string message)`. Feel free to add more as you see fit and send us a pull request so we can merge it in.
+
+The Log method enables you to broadcast messages back to your browser window by using the SignalR connection that is established when executing code.
+This can be useful if you want to follow the execution of your code and is also an example of using features avaiable in the AppDomain to create a more interactive experience. 
+
 ##License
 [MIT License](https://github.com/appharbor/ConsolR/blob/master/LICENSE.md)
