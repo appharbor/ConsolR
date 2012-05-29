@@ -20,25 +20,27 @@ namespace ConsolR.Hosting.Nancy
 
 		public void ProcessRequest(HttpContext context)
 		{
-			var wrappedContext = new HttpContextWrapper(context);
-			if (!BasicAuthenticator.Authenticate(wrappedContext))
+			var contextWrapper = new HttpContextWrapper(context);
+			if (!BasicAuthenticator.Authenticate(contextWrapper))
 			{
 				return;
 			}
 
-			var response = wrappedContext.Response;
+			var response = contextWrapper.Response;
+			var request = contextWrapper.Request;
+
 			var rootPath = string.Format("/{0}", ConfigurationManager.AppSettings["consolr.rootPath"]);
 
-			if (wrappedContext.Request.Path.StartsWith(rootPath))
+			if (request.Path.StartsWith(rootPath))
 			{
-				switch (wrappedContext.Request.Path.Remove(0, rootPath.Length))
+				switch (request.Path.Remove(0, rootPath.Length))
 				{
 					case "":
-						wrappedContext.Response.WriteFile(HostingEnvironment.MapPath("~/assets/consolr/index.html"));
+						contextWrapper.Response.WriteFile(HostingEnvironment.MapPath("~/assets/consolr/index.html"));
 						break;
 					case "/validate":
 						response.ContentType = "application/json";
-						response.Write(GetValidationResult(wrappedContext.Request.InputStream));
+						response.Write(GetValidationResult(request.InputStream));
 						break;
 					default:
 						response.StatusCode = (int)HttpStatusCode.NotFound;
